@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 15:45:59 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/09 16:04:19 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "libunit.h"
+
+/*
+** wait the process end.
+** check and print the test result
+*/
 
 static int	check_result(void)
 {
@@ -45,6 +50,10 @@ static int	check_result(void)
 	printf("[OK]\n");
 	return (1);
 }
+
+/*
+** exec all tests and print results
+*/
 
 int	exec_tests(t_unit_test *testlist)
 {

@@ -6,12 +6,16 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 08:38:18 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 15:50:53 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/09 16:00:01 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libunit.h"
+
+/*
+**  work as normal strdup but has unique name
+*/
 
 static char	*libunit_strdup(const char *s1)
 {
@@ -35,6 +39,10 @@ static char	*libunit_strdup(const char *s1)
 	return (dest);
 }
 
+/*
+** creates a new test for testlist
+*/
+
 static t_unit_test	*create_new_test(const char *casename, t_fnptr fn)
 {
 	t_unit_test	*new_test;
@@ -53,6 +61,10 @@ static t_unit_test	*create_new_test(const char *casename, t_fnptr fn)
 	return (new_test);
 }
 
+/*
+** adds a new test for testlist
+*/
+
 static void	add_new_test(t_unit_test **testlist, t_unit_test *new_test)
 {
 	t_unit_test		*test;
@@ -67,6 +79,10 @@ static void	add_new_test(t_unit_test **testlist, t_unit_test *new_test)
 		test = test->next;
 	test->next = new_test;
 }
+
+/*
+** add new testcase (name and function to test) to testlist
+*/
 
 void	load_test(t_unit_test **testlist, const char *casename, t_fnptr fn)
 {
