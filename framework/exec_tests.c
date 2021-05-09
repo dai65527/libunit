@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 14:05:16 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/09 15:45:59 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ static int	check_result(void)
 	wait(&status);
 	if (WIFSIGNALED(status))
 	{
-		if (WSTOPSIG(status) == SIGSEGV)
+		if (WTERMSIG(status) == SIGSEGV)
 		{
 			printf("[SEGV]\n");
 			return (0);
 		}
-		else if (WSTOPSIG(status) == SIGBUS)
+		else if (WTERMSIG(status) == SIGBUS)
 		{
-			printf("[SEGV]\n");
+			printf("[BUSE]\n");
 			return (0);
 		}
 	}
 	if (WEXITSTATUS(status) != 0)
 	{
-		printf("[OK]\n");
-		return (1);
+		printf("[KO]\n");
+		return (0);
 	}
-	printf("[NG]\n");
-	return (0);
+	printf("[OK]\n");
+	return (1);
 }
 
 int	exec_tests(t_unit_test *testlist)
@@ -56,10 +56,11 @@ int	exec_tests(t_unit_test *testlist)
 	count_ok = 0;
 	while (testlist != NULL)
 	{
-		printf("\t> %s : [", testlist->name);
+		printf("\t> %s : ", testlist->name);
+		fflush(stdout);
 		pid = fork();
 		if (pid == -1)
-			printf("FORK ERROR]\n");
+			printf("[FORK ERROR]\n");
 		else if (pid == 0)
 			exit((*testlist->func)());
 		else

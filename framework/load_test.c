@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 08:38:18 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 14:01:04 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/09 15:50:53 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	add_new_test(t_unit_test **testlist, t_unit_test *new_test)
 		return ;
 	}
 	test = *testlist;
-	while (test->next == NULL)
+	while (test->next != NULL)
 		test = test->next;
 	test->next = new_test;
 }

@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/05/09 14:02:47 by dnakano          ###   ########.fr        #
+#    Updated: 2021/05/09 15:51:53 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,3 @@ fclean:			clean
 
 .PHONY:			re
 re:				fclean all
-
-.PHONY:			debug
-debug:
-				$(warning OBJS = $(OBJS))
-				$(warning SRCS = $(SRCS))
-				$(warning OUTPUTS = $(OUTPUTS))
