@@ -6,14 +6,13 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:09:53 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 15:26:42 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/10 13:30:41 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "test_target.h"
-#include "101_basic_tests.h"
-#include "libunit.h"
+#include "../101_basic_tests.h"
+#include "../../framework/libunit.h"
 
 int	strlen_launcher(void)
 {
