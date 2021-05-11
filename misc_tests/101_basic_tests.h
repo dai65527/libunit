@@ -16,5 +16,7 @@
 int misc_launcher(void);
 int	sleep_test(void);
 int	alarm_test(void);
+int	exit_test(void);
+int	divzero_test(void);
 
 #endif /* 101_BASIC_TESTS_H */

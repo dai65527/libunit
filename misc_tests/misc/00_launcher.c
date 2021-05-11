@@ -9,5 +9,7 @@ int	misc_launcher(void)
 	testlist = NULL;
 	load_test(&testlist, "Sleep Test", &sleep_test);
 	load_test(&testlist, "Alarm Test", &alarm_test);
+	load_test(&testlist, "Exit Test", &exit_test);
+	load_test(&testlist, "Div zero Test", &divzero_test);
 	return(launch_tests(&testlist));
 }

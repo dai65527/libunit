@@ -18,7 +18,9 @@ SRCS			=	$(addprefix $(SRCDIR)/,$(SRCNAME))
 OBJS			=	$(SRCS:%.c=%.o)
 TESTSRCNAME		=	00_launcher.c \
 					01_sleep_test.c \
-					02_alarm_test.c
+					02_alarm_test.c \
+					03_exit_test.c \
+					04_divzero_test.c
 TESTSRCDIR		=	./misc
 TESTSRCS		=	$(addprefix $(TESTSRCDIR)/,$(TESTSRCNAME))
 TESTOBJS		=	$(TESTSRCS:%.c=%.o)
