@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 14:09:53 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/12 11:38:07 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/12 11:52:57 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	strlen_launcher(void)
 	load_test(&testlist, "SEGV Test", &segv_test);
 	load_test(&testlist, "BUSE Test", &buse_test);
 	load_test(&testlist, "PIPE Test", &pipe_test);
+	load_test(&testlist, "FPE Test", &fpe_test);
 	return(launch_tests(&testlist));
 }

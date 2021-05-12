@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/12 11:29:22 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/12 11:52:03 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,27 @@
 #include "libunit.h"
 
 /*
+**  Check TERM signals and output results
+**  Return 1: caught signal and put result
+**  Return 0: put NO result (should continue)
+*/
+
+static int	check_signal(int status)
+{
+	if (WTERMSIG(status) == SIGSEGV)
+		printf("[SEGV]\n");
+	else if (WTERMSIG(status) == SIGBUS)
+		printf("[BUSE]\n");
+	else if (WTERMSIG(status) == SIGPIPE)
+		printf("[PIPE]\n");
+	else if (WTERMSIG(status) == SIGFPE)
+		printf("[FPE]\n");
+	else
+		return (0);
+	return (1);
+}
+
+/*
 ** wait the process end.
 ** check and print the test result
 */
@@ -29,29 +50,8 @@ static int	check_result(void)
 	int		status;
 
 	wait(&status);
-	if (WIFSIGNALED(status))
-	{
-		if (WTERMSIG(status) == SIGSEGV)
-		{
-			printf("[SEGV]\n");
-			return (0);
-		}
-		else if (WTERMSIG(status) == SIGBUS)
-		{
-			printf("[BUSE]\n");
-			return (0);
-		}
-		else if (WTERMSIG(status) == SIGFPE)
-		{
-			printf("[FPE]\n");
-			return (0);
-		}
-		else if (WTERMSIG(status) == SIGPIPE)
-		{
-			printf("[PIPE]\n");
-			return (0);
-		}
-	}
+	if (WIFSIGNALED(status) && check_signal(status))
+		return (0);
 	if (WEXITSTATUS(status) != 0)
 	{
 		printf("[KO]\n");
