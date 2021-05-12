@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   101_basic_tests.h                                  :+:      :+:    :+:   */
+/*   05_pipe_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 14:31:03 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/12 11:50:27 by dnakano          ###   ########.fr       */
+/*   Created: 2021/05/09 14:41:46 by dnakano           #+#    #+#             */
+/*   Updated: 2021/05/12 11:35:59 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _101_BASIC_TESTS_H
-# define _101_BASIC_TESTS_H
+#include <unistd.h>
 
-int strlen_launcher(void);
-int	basic_test(void);
-int	ko_test(void);
-int	segv_test(void);
-int	buse_test(void);
-int	pipe_test(void);
-int	fpe_test(void);
+int	pipe_test(void)
+{
+	int pipe_fd[2];
 
-#endif /* 101_BASIC_TESTS_H */
+	pipe(pipe_fd);
+	close(pipe_fd[0]);
+	write(pipe_fd[1], "42", 2);
+	close(pipe_fd[1]);
+	return (0);
+}
