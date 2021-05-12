@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 16:04:19 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/12 11:29:22 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ static int	check_result(void)
 		else if (WTERMSIG(status) == SIGBUS)
 		{
 			printf("[BUSE]\n");
+			return (0);
+		}
+		else if (WTERMSIG(status) == SIGFPE)
+		{
+			printf("[FPE]\n");
+			return (0);
+		}
+		else if (WTERMSIG(status) == SIGPIPE)
+		{
+			printf("[PIPE]\n");
 			return (0);
 		}
 	}
