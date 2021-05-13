@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/13 12:56:16 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/13 13:08:43 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static int	check_signal(int status)
 		printf("[PIPE]\n");
 	else if (WTERMSIG(status) == SIGFPE)
 		printf("[FPE]\n");
+	else if (WTERMSIG(status) == SIGABRT)
+		printf("[ABRT]\n");
 	else
 		return (0);
 	return (1);
