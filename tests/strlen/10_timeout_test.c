@@ -1,25 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   101_basic_tests.h                                  :+:      :+:    :+:   */
+/*   10_timeout_test.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/09 14:31:03 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/13 12:50:14 by dnakano          ###   ########.fr       */
+/*   Created: 2021/05/13 12:47:48 by dnakano           #+#    #+#             */
+/*   Updated: 2021/05/13 12:49:08 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _101_BASIC_TESTS_H
-# define _101_BASIC_TESTS_H
-
-int strlen_launcher(void);
-int	basic_test(void);
-int	ko_test(void);
-int	segv_test(void);
-int	buse_test(void);
-int	pipe_test(void);
-int	fpe_test(void);
-int timeout_test(void);
-
-#endif /* 101_BASIC_TESTS_H */
+int timeout_test(void)
+{
+	while (1)
+		;
+}
