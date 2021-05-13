@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/13 13:08:43 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/13 13:20:09 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	wait_result(pid_t pid, int *status)
 	if (pid_timer == -1)
 	{
 		kill(pid, SIGKILL);
-		wait(NULL);
+		wait(status);
 		return (-1);
 	}
 	pid_ret = wait(status);
