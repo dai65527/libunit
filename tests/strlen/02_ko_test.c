@@ -12,7 +12,7 @@
 
 #include "../test_target.h"
 
-int		ko_test(void)
+int	ko_test(void)
 {
 	return (-1);
 }
