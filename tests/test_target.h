@@ -13,8 +13,8 @@
 #ifndef TEST_TARGET_H
 # define TEST_TARGET_H
 
-#include <stddef.h>
+# include <stddef.h>
 
-size_t	ft_strlen();
+size_t	ft_strlen(char *str);
 
 #endif

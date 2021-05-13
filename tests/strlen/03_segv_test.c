@@ -18,6 +18,5 @@
 int	segv_test(void)
 {
 	ft_strlen(NULL);
-
 	return (0);
 }
