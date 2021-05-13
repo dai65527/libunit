@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/05/12 11:52:26 by dnakano          ###   ########.fr        #
+#    Updated: 2021/05/13 13:02:53 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ TESTSRCNAME		=	00_launcher.c \
 					03_segv_test.c \
 					04_buse_test.c \
 					05_pipe_test.c \
-					06_fpe_test.c
+					06_fpe_test.c \
+					07_abrt_test.c \
+					10_timeout_test.c
 TESTSRCDIR		=	./strlen
 TESTSRCS		=	$(addprefix $(TESTSRCDIR)/,$(TESTSRCNAME))
 TESTOBJS		=	$(TESTSRCS:%.c=%.o)

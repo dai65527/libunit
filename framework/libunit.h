@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 07:33:08 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 13:48:16 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/13 12:22:32 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBUNIT_H
 
 # include <unistd.h>
+
+# define LIBUNIT_TIMEOUT_MSEC 1000
 
 typedef int	(*t_fnptr)(void);
 
