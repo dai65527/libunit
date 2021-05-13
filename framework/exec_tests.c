@@ -112,7 +112,7 @@ static int	check_result(pid_t pid)
 	}
 	if (WIFSIGNALED(status) && check_signal(status))
 		return (0);
-	if (WEXITSTATUS(status) != 0)
+	if (WEXITSTATUS(status) != LIBUNIT_RESULT_GOOD)
 	{
 		printf("[KO]\n");
 		return (0);
@@ -141,7 +141,7 @@ int	exec_tests(t_unit_test *testlist)
 		if (pid == -1)
 			printf("[LIBUNIT INTERNAL ERROR]\n");
 		else if (pid == 0)
-			exit((*testlist->func)());
+			exit(LIBUNIT_RESULT_GOOD - (*testlist->func)());
 		else
 			count_ok += check_result(pid);
 		count_all++;
