@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/13 12:49:53 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/13 12:56:16 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,16 @@ static pid_t	settimer(int time_sec)
 
 	pid = fork();
 	if (pid == 0)
-		exit (usleep(time_sec * 1000));
-	return pid;
+		exit(usleep(time_sec * 1000));
+	return (pid);
 }
 
 /*
 **  create timer process and return pid of it
+**	returns...
+**		0 on Success fully caught the testing process
+**		1 on Timeout
+**		-1 on Error
 */
 
 static int	wait_result(pid_t pid, int *status)
