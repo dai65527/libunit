@@ -16,6 +16,7 @@
 # include <unistd.h>
 
 # define LIBUNIT_TIMEOUT_MSEC 1000
+# define LIBUNIT_RESULT_GOOD 0x5D
 
 typedef int	(*t_fnptr)(void);
 
