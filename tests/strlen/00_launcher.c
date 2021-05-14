@@ -16,7 +16,8 @@
 
 int	strlen_launcher(void)
 {
-	t_unit_test *testlist;
+	t_unit_test	*testlist;
+
 	puts("STRLEN: ");
 	testlist = NULL;
 	load_test(&testlist, "Basic Test", &basic_test);
@@ -27,5 +28,5 @@ int	strlen_launcher(void)
 	load_test(&testlist, "FPE Test", &fpe_test);
 	load_test(&testlist, "ABRTTest", &abrt_test);
 	load_test(&testlist, "TIMEOUT Test", &timeout_test);
-	return(launch_tests(&testlist));
+	return (launch_tests(&testlist));
 }

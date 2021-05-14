@@ -12,8 +12,8 @@
 
 int	buse_test(void)
 {
-	char *s = "test";
+	const char	*s = "test";
 
-	s[0] = '0';		// this causes bus error
+	((char *)s)[0] = '0';
 	return (0);
 }

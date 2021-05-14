@@ -14,7 +14,7 @@
 
 int	pipe_test(void)
 {
-	int pipe_fd[2];
+	int	pipe_fd[2];
 
 	pipe(pipe_fd);
 	close(pipe_fd[0]);

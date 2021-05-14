@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include "101_basic_tests.h"
 
-int main()
+int	main(void)
 {
 	printf("*********************************\n");
 	printf("******** 42 - Unit Tests ********\n");
