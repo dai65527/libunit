@@ -6,12 +6,14 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/05/14 08:40:35 by dnakano          ###   ########.fr        #
+#    Updated: 2021/05/14 11:04:22 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra
+LDFLAGS			=	-L$(LIBFTDIR) $(patsubst lib%,-l%,$(basename $(LIBFTNAME))) \
+					-L$(TESTLIBDIR) $(patsubst lib%,-l%,$(basename $(TESTLIBNAME)))
 SRCNAME			=	main.c
 SRCDIR			=	.
 SRCS			=	$(addprefix $(SRCDIR)/,$(SRCNAME))
@@ -95,16 +97,13 @@ LIBFT			=	$(LIBFTDIR)/$(LIBFTNAME)
 HEADERDIR		=	.
 NAME			=	test.out
 
-.SUFFIXES:		.o .c
-
 .PHONY:			all
 all:			$(NAME)
 
 $(NAME):		$(TESTLIB) $(LIBFT) $(TESTOBJS) $(OBJS)
 				$(CC) $(CFLAGS) \
 				-o $(NAME) $(OBJS) $(TESTOBJS) \
-				-L$(LIBFTDIR) $(patsubst lib%,-l%,$(basename $(LIBFTNAME))) \
-				-L$(TESTLIBDIR) $(patsubst lib%,-l%,$(basename $(TESTLIBNAME)))
+				$(LDFLAGS)
 
 %.o:%.c
 				$(CC) $(CFLAGS) -c $< -o $@

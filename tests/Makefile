@@ -6,12 +6,13 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/05/13 13:02:53 by dnakano          ###   ########.fr        #
+#    Updated: 2021/05/14 11:09:24 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra
+LDFLAGS			=	-L$(TESTLIBDIR) $(patsubst lib%,-l%,$(basename $(TESTLIBNAME)))
 SRCNAME			=	main.c ft_strlen.c
 SRCDIR			=	.
 SRCS			=	$(addprefix $(SRCDIR)/,$(SRCNAME))
@@ -35,15 +36,13 @@ TESTHEADERDIR	=	../framework
 HEADERDIR		=	.
 NAME			=	test.out
 
-.SUFFIXES:		.o .c
-
 .PHONY:			all
 all:			$(NAME)
 
 $(NAME):		$(TESTLIB) $(TESTOBJS) $(OBJS)
 				$(CC) $(CFLAGS) \
 				-o $(NAME) $(OBJS) $(TESTOBJS) \
-				-L$(TESTLIBDIR) $(patsubst lib%,-l%,$(basename $(TESTLIBNAME)))
+				$(LDFLAGS)
 
 %.o:%.c
 				$(CC) $(CFLAGS) -c $< -o $@
