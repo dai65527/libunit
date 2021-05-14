@@ -6,38 +6,12 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 08:38:18 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/09 16:00:01 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/14 10:44:20 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libunit.h"
-
-/*
-**  work as normal strdup but has unique name
-*/
-
-static char	*libunit_strdup(const char *s1)
-{
-	size_t	idx;
-	size_t	len;
-	char	*dest;
-
-	len = 0;
-	while (s1[len] != '\0')
-		len++;
-	dest = (char *)malloc(len + 1);
-	if (dest == NULL)
-		return (NULL);
-	idx = 0;
-	while (idx < len)
-	{
-		dest[idx] = s1[idx];
-		idx++;
-	}
-	dest[idx] = '\0';
-	return (dest);
-}
 
 /*
 ** creates a new test for testlist
