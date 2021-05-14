@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/05/10 13:23:53 by dnakano          ###   ########.fr        #
+#    Updated: 2021/05/14 11:08:44 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ HEADERNAME		=	libunit.h
 HEADERDIR		=	.
 HEADERS			=	$(addprefix $(HEADERDIR)/,$(HEADERNAME))
 NAME			=	libunit.a
-
-.SUFFIXES:		.o .c
 
 .PHONY:			all
 all:			$(NAME)

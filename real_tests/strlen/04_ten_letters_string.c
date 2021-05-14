@@ -1,0 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   04_ten_letters_string.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/09 14:41:46 by dnakano           #+#    #+#             */
+/*   Updated: 2021/05/13 21:51:11 by dnakano          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <string.h>
+#include "../libft/libft.h"
+
+int	ten_letters_string(void)
+{
+	const char	str[] = "Hello, 42!";
+
+	if (ft_strlen(str) == strlen(str))
+		return (0);
+	else
+		return (-1);
+}
