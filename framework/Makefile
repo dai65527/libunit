@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2021/05/14 11:08:44 by dnakano          ###   ########.fr        #
+#    Updated: 2021/05/14 11:12:57 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ CFLAGS			=	-Wall -Werror -Wextra
 SRCNAME			=	load_test.c \
 					launch_tests.c \
 					exec_tests.c \
-					destroy_test.c
+					destroy_test.c \
+					utils.c
 SRCDIR			=	.
 SRCS			=	$(addprefix $(SRCDIR)/,$(SRCNAME))
 OBJS			=	$(SRCS:%.c=%.o)
@@ -27,8 +28,8 @@ NAME			=	libunit.a
 .PHONY:			all
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(BONUSOBJS) $(HEADERS)
-				ar cr $(NAME) $(OBJS) $(BONUSOBJS)
+$(NAME):		$(OBJS) $(HEADERS)
+				ar cr $(NAME) $(OBJS)
 
 %.o:%.c
 				$(CC) $(CFLAGS) -c $< -o $@

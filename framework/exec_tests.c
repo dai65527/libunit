@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/09 11:18:30 by dnakano           #+#    #+#             */
-/*   Updated: 2021/05/13 13:20:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2021/05/14 10:53:49 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,15 @@ static int	wait_result(pid_t pid, int *status)
 static int	check_signal(int status)
 {
 	if (WTERMSIG(status) == SIGSEGV)
-		printf("[SEGV]\n");
+		printf("%s[SEGV]%s\n", LIBUNIT_TEXT_RED, LIBUNIT_TEXT_RESET);
 	else if (WTERMSIG(status) == SIGBUS)
-		printf("[BUSE]\n");
+		printf("%s[BUSE]%s\n", LIBUNIT_TEXT_RED, LIBUNIT_TEXT_RESET);
 	else if (WTERMSIG(status) == SIGPIPE)
-		printf("[PIPE]\n");
+		printf("%s[PIPE]%s\n", LIBUNIT_TEXT_RED, LIBUNIT_TEXT_RESET);
 	else if (WTERMSIG(status) == SIGFPE)
-		printf("[FPE]\n");
+		printf("%s[FPE]%s\n", LIBUNIT_TEXT_RED, LIBUNIT_TEXT_RESET);
 	else if (WTERMSIG(status) == SIGABRT)
-		printf("[ABRT]\n");
+		printf("%s[ABRT]%s\n", LIBUNIT_TEXT_RED, LIBUNIT_TEXT_RESET);
 	else
 		return (0);
 	return (1);
@@ -102,22 +102,23 @@ static int	check_result(pid_t pid)
 	ret = wait_result(pid, &status);
 	if (ret == -1)
 	{
-		printf("[LIBUNIT INTERNAL ERROR]\n");
+		printf("%s[LIBUNIT INTERNAL ERROR]%s\n", LIBUNIT_TEXT_RED,
+			LIBUNIT_TEXT_RESET);
 		return (0);
 	}
 	else if (ret == 1)
 	{
-		printf("[TIMEOUT]\n");
+		printf("%s[TIMEOUT]%s\n", LIBUNIT_TEXT_RED, LIBUNIT_TEXT_RESET);
 		return (0);
 	}
 	if (WIFSIGNALED(status) && check_signal(status))
 		return (0);
 	if (WEXITSTATUS(status) != LIBUNIT_RESULT_GOOD)
 	{
-		printf("[KO]\n");
+		printf("%s[KO]%s\n", LIBUNIT_TEXT_RED, LIBUNIT_TEXT_RESET);
 		return (0);
 	}
-	printf("[OK]\n");
+	printf("%s[OK]%s\n", LIBUNIT_TEXT_GREEN, LIBUNIT_TEXT_RESET);
 	return (1);
 }
 
@@ -135,19 +136,19 @@ int	exec_tests(t_unit_test *testlist)
 	count_ok = 0;
 	while (testlist != NULL)
 	{
-		printf("\t> %s : ", testlist->name);
-		fflush(stdout);
+		put_testname(testlist->name);
 		pid = fork();
-		if (pid == -1)
-			printf("[LIBUNIT INTERNAL ERROR]\n");
-		else if (pid == 0)
+		if (pid == 0)
 			exit(LIBUNIT_RESULT_GOOD - (*testlist->func)());
+		if (pid == -1)
+			printf("%s[LIBUNIT INTERNAL ERROR]%s\n", LIBUNIT_TEXT_RED,
+				LIBUNIT_TEXT_RESET);
 		else
 			count_ok += check_result(pid);
 		count_all++;
 		testlist = testlist->next;
 	}
-	printf("%d/%d tests checked\n", count_ok, count_all);
+	put_summary(count_all, count_ok);
 	if (count_ok != count_all)
 		return (-1);
 	return (0);
